@@ -16,7 +16,7 @@
             <tr>
                 <td><%= match["id"] %></td>
                 <td><%= match["begin_at"] %></td>
-                <td><%= match["name"] %></td>
+                <td><%= link match["name"], to: match_path(@conn, :show, match["id"]) %></td>
                 <td></td>
             </tr>
         <% end %>

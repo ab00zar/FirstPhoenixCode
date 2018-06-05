@@ -3,7 +3,9 @@ defmodule PandaUi.UserSocket do
 
   ## Channels
   # channel "room:*", PandaUi.RoomChannel
-
+  
+  channel "odds:*", PandaUi.OddsChannel
+  
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
   # transport :longpoll, Phoenix.Transports.LongPoll

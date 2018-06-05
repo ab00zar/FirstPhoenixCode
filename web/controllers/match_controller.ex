@@ -9,7 +9,6 @@ defmodule PandaUi.MatchController do
   end
   
   def show(conn, %{"id" => match_id}) do
-    match = Match.odds_using_cache(match_id)
-    render conn, "show.html", match: match
+    render conn, "show.html", match_id: match_id
   end
 end

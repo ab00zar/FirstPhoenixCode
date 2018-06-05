@@ -1,7 +1,7 @@
 <h1>Show</h1>
-<%= @match %>
+<%= @match_id %>
 <script>
     document.addEventListener("DOMContentLoaded", function(){
-        window.createSocket(<%= @match %>)    
+        window.createSocket(<%= @match_id %>)    
     });
 </script>

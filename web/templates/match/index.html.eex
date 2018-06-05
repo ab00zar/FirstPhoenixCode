@@ -1,6 +1,24 @@
 <h1>Welcome!</h1>
-<h3>List of upcoming matches</h3>
-<%= for match <- @matches do %>
-    <%= inspect match %>
-    <br>
-<% end %>
+<h3>5 upcoming matches are:</h3>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Begin at</th>
+            <th>Name</th>
+            <th>Odds</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <%= for match <- @matches do %>
+            <tr>
+                <td><%= match["id"] %></td>
+                <td><%= match["begin_at"] %></td>
+                <td><%= match["name"] %></td>
+                <td></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,7 @@
+<h1>Show</h1>
+<%= @match %>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        window.createSocket(<%= @match %>)    
+    });
+</script>

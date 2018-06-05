@@ -1,2 +1,6 @@
 <h1>Welcome!</h1>
 <h3>List of upcoming matches</h3>
+<%= for match <- @matches do %>
+    <%= inspect match %>
+    <br>
+<% end %>

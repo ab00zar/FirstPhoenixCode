@@ -5,6 +5,11 @@
 # is restricted to this project.
 use Mix.Config
 
+config :panda_ui, PandaUi.Cache,
+  adapter: Nebulex.Adapters.Local,
+  gc_interval: 86_400 # 24 hrs
+
+
 # Configures the endpoint
 config :panda_ui, PandaUi.Endpoint,
   url: [host: "localhost"],

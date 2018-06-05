@@ -18,8 +18,9 @@ defmodule PandaUi.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {PandaUi, []},
-      extra_applications: [:logger]
+      #mod: {PandaUi, []},
+      extra_applications: [:logger],
+      mod: {PandaUi.Application, []}
     ]
   end
 
@@ -38,7 +39,8 @@ defmodule PandaUi.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:httpoison, "~> 1.0"}
+      {:httpoison, "~> 1.0"},
+      {:nebulex, "~> 1.0.0-rc.2"}
     ]
   end
 end

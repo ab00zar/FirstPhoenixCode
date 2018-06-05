@@ -35,13 +35,13 @@ defmodule PandaUi.Match do
     end
     
     def odds_using_cache(match_id) do
-        if Panda.Cache.has_key?(match_id) do
+        if PandaUi.Cache.has_key?(match_id) do
             IO.puts "It's available in the cache"
-            Panda.Cache.get(match_id)
+            PandaUi.Cache.get(match_id)
         else
             result = odds_for_match(match_id)
             IO.inspect result
-            Panda.Cache.set(match_id, result)
+            PandaUi.Cache.set(match_id, result)
             "The result is stored in the cache for future requests"
         end
     end 

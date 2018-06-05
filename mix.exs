@@ -18,9 +18,8 @@ defmodule PandaUi.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      #mod: {PandaUi, []},
-      extra_applications: [:logger],
-      mod: {PandaUi.Application, []}
+      mod: {PandaUi, []},
+      extra_applications: [:logger]
     ]
   end
 

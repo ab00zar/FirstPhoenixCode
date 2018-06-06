@@ -1,5 +1,8 @@
-<h1>Show</h1>
-<%= @match_id %>
+<h1>Odds for match: <%= @match_id %></h1>
+
+<ul class="match-odds">
+</ul>
+
 <script>
     document.addEventListener("DOMContentLoaded", function(){
         window.createSocket(<%= @match_id %>)    

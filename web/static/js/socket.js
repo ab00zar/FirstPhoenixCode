@@ -58,9 +58,18 @@ socket.connect()
 const createSocket = (matchId) => {
     let channel = socket.channel(`odds:${matchId}`, {})
     channel.join()
-      .receive("ok", resp => { console.log("Joined successfully", resp) })
+      .receive("ok", resp => { renderOdds(resp.odds) })
       .receive("error", resp => { console.log("Unable to join", resp) })    
 }
 
+function renderOdds(odds){
+    console.log("Joined successfully", odds)
+    var output = '';
+    for (var entry in odds) {
+        output += '<li> ' + entry + ' => ' + odds[entry] + '</li>';
+    }
+    
+    document.querySelector('.match-odds').innerHTML = output;
+}
 
 window.createSocket = createSocket;

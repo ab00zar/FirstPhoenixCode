@@ -1,1 +1,12 @@
 /* This file is for your main application css. */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.loading {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(https://www.creditmutuel.fr/cmne/fr/banques/webservices/nswr/images/loading.gif) center no-repeat #fff;
+}

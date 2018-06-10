@@ -3,26 +3,26 @@ defmodule PandaUi.Match do
     use PandaUi.Web, :model
 
     def upcoming_matches do
-        url = "https://api.pandascore.co/matches/upcoming?sort=begin_at&page[size]=5&token=" <> "_43x3U-PSvgZN-g8_ixuferP1C_dFg-xloXzxhprwglQ8ka4p8M"
+        url = "https://api.pandascore.co/matches/upcoming?sort=begin_at&page[size]=5&token=" <> System.get_env("token")
         %{body: body} = HTTPoison.get!(url, [], [ ssl: [{:versions, [:'tlsv1.2']}] ])
         r = Poison.Parser.parse! body
         for n <- r, do: %{"begin_at" => n["begin_at"], "id" => n["id"], "name" => n["name"]}
     end
 
     def odds_for_match(match_id) do
-        url = "https://api.pandascore.co/matches/" <> Integer.to_string(match_id) <> "?&token=" <> "_43x3U-PSvgZN-g8_ixuferP1C_dFg-xloXzxhprwglQ8ka4p8M"
+        url = "https://api.pandascore.co/matches/" <> Integer.to_string(match_id) <> "?&token=" <> System.get_env("token")
         %{body: body} = HTTPoison.get!(url, [], [ ssl: [{:versions, [:'tlsv1.2']}] ])
         r = Poison.Parser.parse! body
 
         #Number of matches opponent1 won
         opp1_won_matches_url = "https://api.pandascore.co/matches/?filter[winner_id]=" <> Integer.to_string(List.first(r["opponents"])["id"]) 
-          <> "&token=" <> "_43x3U-PSvgZN-g8_ixuferP1C_dFg-xloXzxhprwglQ8ka4p8M"
+          <> "&token=" <> System.get_env("token")
         %{body: body} = HTTPoison.get!(opp1_won_matches_url, [], [ ssl: [{:versions, [:'tlsv1.2']}] ])
         opp1_won_matches = length(Poison.Parser.parse! body)
 
         #Number of matches opponent2 won
         opp2_won_matches_url = "https://api.pandascore.co/matches/?filter[winner_id]=" <> Integer.to_string(List.last(r["opponents"])["id"]) 
-          <> "&token=" <> "_43x3U-PSvgZN-g8_ixuferP1C_dFg-xloXzxhprwglQ8ka4p8M"
+          <> "&token=" <> System.get_env("token")
         %{body: body} = HTTPoison.get!(opp2_won_matches_url, [], [ ssl: [{:versions, [:'tlsv1.2']}] ])
         opp2_won_matches = length(Poison.Parser.parse! body)
 

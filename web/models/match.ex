@@ -27,7 +27,7 @@ defmodule PandaUi.Match do
         opp2_won_matches = length(Poison.Parser.parse! body)
 
         #Calculate odds based on the number of matches each opponent won before
-        ratio = opp1_won_matches / opp2_won_matches
+        ratio = if (opp1_won_matches == 0 || opp2_won_matches == 0), do: :rand.uniform, else: opp1_won_matches / opp2_won_matches
         opp2_odds = 100 / (ratio + 1)
         opp1_odds = 100 - opp2_odds
 
